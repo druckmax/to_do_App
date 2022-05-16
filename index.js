@@ -92,6 +92,7 @@ Please select a option from the list`,
 
 // PROMPT
 async function main() {
+  
   // List of options
   let answers = await inquirer.prompt(questions);
 
