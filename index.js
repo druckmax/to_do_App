@@ -92,7 +92,9 @@ Please select a option from the list`,
 
 // PROMPT
 async function main() {
+  // List of options
   let answers = await inquirer.prompt(questions);
+
   // Show TODO
   if (answers.Choices === "Show TODO List") {
     console.table(toDoList);
@@ -105,7 +107,6 @@ async function main() {
       type: "input",
       message: "Type the name of your task",
     });
-    // console.log(add);
     addToDo(add.addTask);
     console.table(toDoList);
   }
@@ -136,20 +137,21 @@ async function main() {
     updateToDo(index.indexTask, status.statusTask);
     console.table(toDoList);
   }
+
   // Edit tasks
-  else if(answers.Choices === 'Edit tasks') {
-      let index = await inquirer.prompt({
-        name: "editIndex",
-        type: "input",
-        message: "Which task do you want to edit?",
-      });
-      let edit = await inquirer.prompt({
-        name: "editTask",
-        type: "input",
-        message: "Type in your new task!",
-      });
-      editToDo(index.editIndex, edit.editTask);
-      console.table(toDoList);
+  else if (answers.Choices === "Edit tasks") {
+    let index = await inquirer.prompt({
+      name: "editIndex",
+      type: "input",
+      message: "Which task do you want to edit?",
+    });
+    let edit = await inquirer.prompt({
+      name: "editTask",
+      type: "input",
+      message: "Type in your new task!",
+    });
+    editToDo(index.editIndex, edit.editTask);
+    console.table(toDoList);
   }
 
   // Show pending tasks
